@@ -9,3 +9,10 @@ mongoose.connection
   .on('error', (error) => {
     console.warn('Warning', error)
   })
+
+//Reset database statements request from tests (mockups)
+beforeEach((done) => {
+  mongoose.connection.collections.users.drop(() => {
+    done();
+  });
+});

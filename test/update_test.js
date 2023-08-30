@@ -28,11 +28,15 @@ describe('Updating records', () => {
     assertName(joe.updateOne({ name: 'Alex' }), done)
   })
 
-  it('A model class can update', () => {})
+  it('A model class can update', (done) => {
+    assertName(User.updateOne({ name: 'Joe' }, { name: 'Alex' }), done)
+  })
 
-  it('A model class can update one record', () => {})
+  it('A model class can update one record', (done) => {
+    assertName(User.findOneAndUpdate({ name: 'Joe' }, { name: 'Alex' }), done)
+  })
 
-  it('A model class can find a record with an Id and update', () => {})
-
-  it('A user can have their postcount incremented by 1', () => {})
+  it('A model class can find a record with an Id and update', (done) => {
+    assertName(User.findByIdAndUpdate(joe._id, { name: 'Alex' }), done)
+  })
 })

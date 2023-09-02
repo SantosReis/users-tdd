@@ -18,12 +18,12 @@ before((done) => {
 
 //Reset database statements request from tests (mockups)
 beforeEach((done) => {
-  const { users, comments, blogposts } = mongoose.connection.collections;
+  const { users, comments, blogposts } = mongoose.connection.collections
   users.drop(() => {
     comments.drop(() => {
       blogposts.drop(() => {
-        done();
-      });
-    });
-  });
+        done()
+      })
+    })
+  })
 })

@@ -20,10 +20,11 @@ describe('Assocations', () => {
       .then(() => done());
   });
 
-  it.only('saves a relation between a user and a blogpost', (done) => {
+  it('saves a relation between a user and a blogpost', (done) => {
     User.findOne({ name: 'Joe' })
+      .populate('blogPosts')
       .then((user) => {
-        console.log(user)
+        assert(user.blogPosts[0].title === 'JS is Great');
         done();
       });
   });
